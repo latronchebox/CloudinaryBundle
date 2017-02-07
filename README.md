@@ -4,7 +4,8 @@ MisteioCloudinaryBundle
 [![Latest Unstable Version](https://poser.pugx.org/misteio/cloudinary-bundle/v/unstable)](https://packagist.org/packages/misteio/cloudinary-bundle) 
 [![License](https://poser.pugx.org/misteio/cloudinary-bundle/license)](https://packagist.org/packages/misteio/cloudinary-bundle)
 [![Build Status](https://travis-ci.org/misteio/CloudinaryBundle.svg?branch=master)](https://travis-ci.org/misteio/CloudinaryBundle)
-[![Coverage Status](https://coveralls.io/repos/misteio/CloudinaryBundle/badge.svg?branch=master&service=github)](https://coveralls.io/github/misteio/CloudinaryBundle?branch=master)
+[![Coverage Status](https://codeclimate.com/repos/586d2bd9fa6a943e97001bc5/badges/36b972b7a31123e8d235/coverage.svg)](https://codeclimate.com/repos/586d2bd9fa6a943e97001bc5/coverage)
+[![Code Climate](https://codeclimate.com/repos/586d2bd9fa6a943e97001bc5/badges/36b972b7a31123e8d235/gpa.svg)](https://codeclimate.com/repos/586d2bd9fa6a943e97001bc5/feed)
 
 MisteioCloudinaryBundle is a Symfony2 Bundle forked from laravel4-cloudinary (thanks [Teeplus](https://github.com/teepluss/laravel4-cloudinary)) and cloudinary-bundle (thanks [Speicher210](https://github.com/Speicher210/CloudinaryBundle)). You can use it as a service, and some extends are implemented for Twig. 
 [Cloudinary Library v1.0.11](http://cloudinary.com/documentation/php_integration).
@@ -56,16 +57,23 @@ You can use it via Dependency Injection Component(DIC) service.
 ```
 
 
-Upload
+Upload Image
 ```php
 	$cloudinary -> upload('path/to/file', 'name', $tags)
 ```
-
-
+Upload Video
+```php
+	$cloudinary -> uploadVideo('path/to/file', 'name', $tags)
+```
 
 Display an image
 ```php
 	$cloudinary -> show('public_name', array('width' => 150, 'height' => 150, 'crop' => 'fit', 'radius' => 20));
+```
+
+Display a video
+```php
+	$cloudinary -> showVideo('public_name', array('width' => 150, 'height' => 150, 'crop' => 'fit', 'radius' => 20));
 ```
 
 > More document from [cloudinary.com](http://cloudinary.com/documentation/image_transformations)
@@ -92,6 +100,11 @@ Manage with tag
 ## Twig for displaying image
 ```php
 	{{ 'my_public_id'|cloudinary_url({"width" : 150, "height" : 150, "crop" : "fill", "radius" : 20}) }}
+```
+
+## Twig for displaying video
+```php
+	{{ 'my_public_id'|cloudinary_url_video({"width" : 150, "height" : 150, "crop" : "fill", "radius" : 20}) }}
 ```
 
 ## Security
